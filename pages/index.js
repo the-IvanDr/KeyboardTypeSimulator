@@ -1,65 +1,47 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Link from 'next/link';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+import { MainLayout } from '../components/MainLayout/MainLayout';
+import Article from '../components/Article/Article';
+import LinkButton from '../components/LinkButton/LinkButton';
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+export default function Index() {
+    return (
+        <MainLayout>
+            <Head>
+                <title>KTS | Welcome</title>
+            </Head>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+            <article>
+                <section>
+                    <div className='main-image'>
+                        <img src='method.jpg' />
+                    </div>
+                    <h3>Печатай быстрее</h3>
+                    <p>Благодаря клавиатурному тренажеру вы научитесь методу <span className='highlight'>слепой печати</span> и будете использовать при наборе текста <span className='highlight'>все 10 пальцев</span>.</p>
+                    <LinkButton path='/first-step'>Начать печатать</LinkButton>
+                </section>
+                <div className='section-wrapper'>
+                    <section>
+                        <h4>Научиться печатать вслепую</h4>
+                        <p>Ускорь прогресс обучения слепой печати и развивай ценные навыки набора текста!</p>
+                        <Link href='/learn'>
+                            <a>
+                                Узнай, как печатать вслепую <i className="fa fa-angle-right" aria-hidden="true" />
+                            </a>
+                        </Link>
+                    </section>
+                    <section>
+                        <h4>Пройди тест на скорость печати</h4>
+                        <p>Узнай свою скорость печати и удиви приятелей своим результатом.</p>
+                        <Link href='/train'>
+                            <a>
+                                Перейти к тесту скорости печати <i className="fa fa-angle-right" aria-hidden="true" />
+                            </a>
+                        </Link>
+                    </section>
+                </div>
+            </article>
+        </MainLayout>
+    )
 }
