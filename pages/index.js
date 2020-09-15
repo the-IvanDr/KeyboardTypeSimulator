@@ -34,7 +34,7 @@ export default function Index() {
                     <section>
                         <h4>Пройди тест на скорость печати</h4>
                         <p>Узнай свою скорость печати и удиви приятелей своим результатом.</p>
-                        <Link href='/train'>
+                        <Link href='/test'>
                             <a>
                                 Перейти к тесту скорости печати <i className="fa fa-angle-right" aria-hidden="true" />
                             </a>
