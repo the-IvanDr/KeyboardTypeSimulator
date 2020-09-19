@@ -19,7 +19,7 @@ export default function Index() {
                     </div>
                     <h3>Печатай быстрее</h3>
                     <p>Благодаря клавиатурному тренажеру вы научитесь методу <span className='highlight'>слепой печати</span> и будете использовать при наборе текста <span className='highlight'>все 10 пальцев</span>.</p>
-                    <LinkButton path='/first-step'>Начать печатать</LinkButton>
+                    <LinkButton path='/first-step' reload={false}>Начать печатать</LinkButton>
                 </section>
                 <div className='section-wrapper'>
                     <section>

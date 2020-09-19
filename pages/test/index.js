@@ -1,11 +1,28 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+import checkKey from '../../functions/checkKey';
+
 import { MainLayout } from '../../components/MainLayout/MainLayout';
+import TextTyping from '../../components/TextTyping/TextTyping';
+import TypeResults from '../../components/TypeResults/TypeResults';
 
 
-export default function Test({ text:randomText }) {
+export default function Test({ text: randomText }) {
+
     const [text, setText] = useState(randomText);
+
+    const [mistake, setMistake] = useState(false);
+
+    const [isWin, setWin] = useState(false);
+    const [isStart, setStart] = useState(true);
+
+
+    const [time, setTime] = useState(0);
+    const [results, setResult] = useState({
+        speed: 0,
+        currency: 100,
+    });
 
     const [state, setState] = useState({
         counter: 0,
@@ -15,56 +32,65 @@ export default function Test({ text:randomText }) {
     })
 
     function typeHandler(event) {
-        const counter = state.counter + 1;
-        const beforeFocus = state.beforeFocus + state.typeFocus + '';
-        const typeFocus = state.afterFocus[0];
-        const afterFocus = text.slice(counter+1);
+        console.log(time);
+        switch (checkKey(event.key, state.typeFocus)) {
+            case 0:
+                setMistake(true);
+                return;
+            case -1:
+                return;
+            case 1:
+                setMistake(false);
 
-        setState({
-            counter,
-            beforeFocus,
-            typeFocus,
-            afterFocus
-        })
+                const counter = state.counter + 1;
+                const beforeFocus = state.beforeFocus + state.typeFocus + '';
+                const typeFocus = state.afterFocus[0];
+                const afterFocus = text.slice(counter + 1);
+
+                setState({
+                    counter,
+                    beforeFocus,
+                    typeFocus,
+                    afterFocus
+                })
+
+                return;
+        }
     }
 
-    useEffect(() => { // Перебацать
-        if(!state.typeFocus) return;
+    useEffect(() => {
+        if (!state.typeFocus) {
+            setWin(true);
+            return;
+        };
 
         window.addEventListener('keydown', typeHandler);
-        return () => window.removeEventListener('keydown', typeHandler);
-    }, [state.counter, state.beforeFocus, state.typeFocus, state.afterFocus]);
+        return () => window.removeEventListener('keydown', typeHandler);     
+    });
+
 
     return (
         <MainLayout>
-            <div className='Test'>
-                <div className='Test__wrapper'>
-                    <div className='Test__main-text'>
-                        <span className='beforefocus'>{state.beforeFocus}</span>
-                        <span className='typefocus'>{state.typeFocus}</span>
-                        <span className='afterfocus'>{state.afterFocus}</span>
-                    </div>
-                    <div className='Test__main-state'>
-                        <div className='Test__main-state__speed'>
-                            <div className='Test__main-state__title'><i className="fa fa-clock-o" aria-hidden="true" /> скорость</div>
-                            <div className='Test__main-state__value'><span>100</span>Зн./мин</div>
-                        </div>
 
-                        <div className='Test__main-state__accuracy'>
-                            <div className='Test__main-state__title'><i className="fa fa-bullseye" aria-hidden="true" /> точность</div>
-                            <div className='Test__main-state__value'><span>{state.counter}</span>%</div>
-                        </div>
-                    </div>
-                </div>
+            {
+                isWin
+                    ? <TypeResults />
+                    : <TextTyping
+                        before={state.beforeFocus}
+                        after={state.afterFocus}
+                        mistake={mistake}
+                        typeFocus={state.typeFocus}
+                        results={{ speed: time, currency: 120 }}
+                    />
+            }
 
-                <a href='/test'><i className="fa fa-refresh" aria-hidden="true" />заново</a>
-            </div>
         </MainLayout>
     )
 }
 
 export async function getServerSideProps(context) {
-    let text = 'С ростом популярности Интернета проявились и негативные аспекты его применения. В частности, некоторые люди увлекаются виртуальным пространством и начинают предпочитать Интернет реальности. Интернет-зависимость многие считают сходной с химической зависимостью вроде курения или наркомании. По данным различных исследований, интернет-зависимыми сегодня являются около 10 процентов всех пользователей.';
+    const response = await fetch('https://typingsimulator.firebaseio.com/texts/text.json');
+    const text = await response.json();
 
     return {
         props: { text }
