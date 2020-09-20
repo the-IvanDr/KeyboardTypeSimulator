@@ -7,8 +7,12 @@
 }
 
 body{
-    padding: 20px 330px;
     background: $background-color;
+}
+
+#__next{
+    width: 860px;
+    margin: 0 auto;
 }
 
 @import './Header';
@@ -17,3 +21,5 @@ body{
 @import './Test';
 @import './TypeResults';
 @import './AddTextToDB';
+@import './CustomText';
+@import './Learn';

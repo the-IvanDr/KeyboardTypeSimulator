@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import { MainLayout } from '../components/MainLayout/MainLayout';
-import Article from '../components/Article/Article';
 import LinkButton from '../components/LinkButton/LinkButton';
 
 export default function Index() {
@@ -15,7 +14,7 @@ export default function Index() {
             <article>
                 <section>
                     <div className='main-image'>
-                        <img src='method.jpg' />
+                        <img src='img/method.jpg' />
                     </div>
                     <h3>Печатай быстрее</h3>
                     <p>Благодаря клавиатурному тренажеру вы научитесь методу <span className='highlight'>слепой печати</span> и будете использовать при наборе текста <span className='highlight'>все 10 пальцев</span>.</p>

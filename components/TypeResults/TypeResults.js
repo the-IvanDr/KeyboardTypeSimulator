@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import LinkButton from '../../components/LinkButton/LinkButton';
 
-export default function TypeResults({ results }) {
+export default function TypeResults({ results, currentPath }) {
     function repeatTest(event) {
         if (event.code === 'Space') {
             window.location.reload();
@@ -30,7 +30,7 @@ export default function TypeResults({ results }) {
                     </div>
                 </div>
             </div>
-            <LinkButton path='/test' reload={true}>Повторить</LinkButton>
+            <LinkButton path={currentPath} reload={true}>Повторить</LinkButton>
         </div>
     )
 }

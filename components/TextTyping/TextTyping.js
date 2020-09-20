@@ -1,4 +1,6 @@
-export default function TextTyping({before, after, mistake, typeFocus, results}) {
+import {useState, useEffect} from 'react';
+
+export default function TextTyping({before, after, mistake, typeFocus, results, currentPath}) {
     return (
         <div className='Test' onMouseDown={ev => ev.preventDefault()}>
             <div className='Test__wrapper'>
@@ -20,7 +22,7 @@ export default function TextTyping({before, after, mistake, typeFocus, results})
                 </div>
             </div>
 
-            <a href='/test'><i className="fa fa-refresh" aria-hidden="true" />заново</a>
+            <a href={currentPath}><i className="fa fa-refresh" aria-hidden="true" />заново</a>
         </div>
     )
 }
