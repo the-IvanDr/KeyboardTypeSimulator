@@ -13,13 +13,14 @@ export default function Test({ text: randomText }) {
     const [text, setText] = useState(randomText);
 
     const [mistake, setMistake] = useState(false);
+    const [mistakeCount, setMistakeCount] = useState(0);
 
     const [isWin, setWin] = useState(false);
-    const [isStart, setStart] = useState(true);
+    const [isStart, setStart] = useState(false);
 
-
+    const [timer, setTimer] = useState(null);
     const [time, setTime] = useState(0);
-    const [results, setResult] = useState({
+    const [results, setResults] = useState({
         speed: 0,
         currency: 100,
     });
@@ -31,14 +32,38 @@ export default function Test({ text: randomText }) {
         afterFocus: text.slice(1)
     })
 
+    useEffect(() => {
+        if (!state.typeFocus) {
+            setWin(true);
+            clearInterval(timer);
+            return;
+        };
+
+        window.addEventListener('keydown', typeHandler);
+        return () => window.removeEventListener('keydown', typeHandler);
+    });
+
+    useEffect(() => {
+        if (!state.counter) return;
+        setResults(prev => ({ ...prev, speed: Math.round(state.counter / time * 60) }))
+    }, [time]);
+
+    useEffect(()=>{
+        if(mistake){
+            setMistakeCount(prev => prev+1);
+            setResults(prev => ({...prev, currency: (prev.currency - (mistakeCount+1 * 100)/text.length).toFixed(1)}))
+        }
+    }, [mistake])
+
+
+
     function typeHandler(event) {
-        console.log(time);
         switch (checkKey(event.key, state.typeFocus)) {
             case 0:
                 setMistake(true);
-                return;
+                break;
             case -1:
-                return;
+                break;
             case 1:
                 setMistake(false);
 
@@ -53,34 +78,30 @@ export default function Test({ text: randomText }) {
                     typeFocus,
                     afterFocus
                 })
-
-                return;
         }
     }
 
-    useEffect(() => {
-        if (!state.typeFocus) {
-            setWin(true);
-            return;
-        };
+    if (!isStart && (state.counter === 1 || mistakeCount === 1)) {
+        setStart(true);
 
-        window.addEventListener('keydown', typeHandler);
-        return () => window.removeEventListener('keydown', typeHandler);     
-    });
-
+        setTimer(setInterval(() => {
+            setTime(prev => prev + 1);
+        }, 1000));
+    }
+    
 
     return (
         <MainLayout>
 
             {
                 isWin
-                    ? <TypeResults />
+                    ? <TypeResults results={results} />
                     : <TextTyping
                         before={state.beforeFocus}
                         after={state.afterFocus}
                         mistake={mistake}
                         typeFocus={state.typeFocus}
-                        results={{ speed: time, currency: 120 }}
+                        results={results}
                     />
             }
 
@@ -89,10 +110,15 @@ export default function Test({ text: randomText }) {
 }
 
 export async function getServerSideProps(context) {
-    const response = await fetch('https://typingsimulator.firebaseio.com/texts/text.json');
+    const response = await fetch('https://typingsimulator.firebaseio.com/texts.json');
     const text = await response.json();
 
+    const arr = Object.keys(text);
+    let rand = Math.floor(Math.random() * (arr.length + 1));
+    const randomText = text[arr[rand]];
+
+
     return {
-        props: { text }
+        props: { text: randomText }
     }
 }

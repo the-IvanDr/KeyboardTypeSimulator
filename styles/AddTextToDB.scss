@@ -1,0 +1,71 @@
+.addTextToDb {
+    background: #fff;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
+    &__words-amount {
+        font-size: 12px;
+        text-align: right;
+        padding-right: 10px;
+        opacity: 0.7;
+    }
+
+    &__success-msg,
+    &__error-msg {
+        display: none;
+        opacity: 0;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 15px;
+        opacity: 0;
+        transition: all .3s;
+    }
+
+    &__success-msg.show,
+    &__error-msg.show{
+        display: block;
+        animation: showBlock .5s linear forwards;
+    }
+
+    &__success-msg {
+        background: #77dd77;
+    }
+
+    &__error-msg{
+        background: #DD9475;
+    }
+
+    textarea {
+        resize: none;
+        padding: 10px;
+        border-radius: 5px;
+        height: 200px;
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.7);
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        margin-top: 10px;
+        width: 200px;
+        padding: 10px;
+    }
+}
+
+
+@keyframes showBlock {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: .9;
+    }
+}

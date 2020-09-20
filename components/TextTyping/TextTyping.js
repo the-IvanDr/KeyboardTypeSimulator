@@ -1,6 +1,6 @@
 export default function TextTyping({before, after, mistake, typeFocus, results}) {
     return (
-        <div className='Test'>
+        <div className='Test' onMouseDown={ev => ev.preventDefault()}>
             <div className='Test__wrapper'>
                 <div className='Test__main-text'>
                     <span className='beforefocus'>{before}</span>

@@ -1,6 +1,18 @@
+import { useEffect, useRef } from 'react';
 import LinkButton from '../../components/LinkButton/LinkButton';
 
-export default function TypeResults() {
+export default function TypeResults({ results }) {
+    function repeatTest(event) {
+        if (event.code === 'Space') {
+            window.location.reload();
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('keydown', repeatTest);
+        return () => window.removeEventListener('keydown', repeatTest);
+    })
+
     return (
         <div className='TypeResults'>
             <h4>Результат:</h4>
@@ -8,13 +20,13 @@ export default function TypeResults() {
                 <div className='TypeResults__speed'>
                     <div className='TypeResults__title'>Скорость</div>
                     <div className='TypeResults__data'>
-                        398 <span>зн./мин</span>
+                        {results.speed} <span>зн./мин</span>
                     </div>
                 </div>
                 <div className='TypeResults__currency'>
                     <div className='TypeResults__title'>Точность</div>
                     <div className='TypeResults__data'>
-                        96<span>%</span>
+                        {results.currency}<span>%</span>
                     </div>
                 </div>
             </div>
