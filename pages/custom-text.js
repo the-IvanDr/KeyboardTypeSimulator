@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Head from 'next/head';
+
 import { MainLayout } from '../components/MainLayout/MainLayout';
 import TypeTest from '../components/TypeTest/TypeTest';
 
@@ -19,6 +21,10 @@ export default function CustomText() {
 
     return (
         <MainLayout>
+            <Head>
+                <title>Печатать свой текст</title>
+            </Head>
+
             {
                 showTypeTest
                     ? <TypeTest text={text} />

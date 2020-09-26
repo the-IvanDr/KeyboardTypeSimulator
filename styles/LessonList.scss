@@ -1,0 +1,50 @@
+.LessonList{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    
+    li{
+        width: 100px;
+        height: 50px;
+        background: $button-color;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        opacity: .9;
+
+        a{
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            font-size: 13px;
+            color: #fff;
+
+            &::after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                background: #000000;
+                opacity: 0;
+
+                transition: opacity .2s;
+            }
+            
+
+            &:hover{
+                cursor: pointer;
+                &::after{
+                    opacity: .2;
+                }
+            }
+            
+        }
+    }
+}

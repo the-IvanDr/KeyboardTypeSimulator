@@ -7,7 +7,7 @@ export default function Header() {
 
     return (
         <header>
-            <Link href='/'><a className="logo"><img src='logo.png'></img></a></Link>
+            <Link href='/'><a className="logo"><img src='../logo.png'></img></a></Link>
             <nav>
                 <Link href='/learn'><a className={path === '/learn' ? 'current' : null}>Обучение</a></Link>
                 <Link href='/train'><a className={path === '/train' ? 'current' : null}>Тренажер</a></Link>

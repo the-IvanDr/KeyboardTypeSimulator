@@ -1,0 +1,175 @@
+$key-height: 45px;
+$key-width: 45px;
+$backspace-width: 70px;
+$tab-width: 70px;
+$caps-width: 80px;
+$enter-width: 80px;
+$shift-width: 105px;
+$space-width: $key-width * 8;
+
+$little-color: #bef574;
+$second-color: #add8e6;
+$middle-color: #bc5d58;
+$index-l-color: #efaf8c;
+$index-r-color: #f0e891;
+
+.Keyboard {
+    width: 700px;
+    border-radius: 5px;
+    padding: 2px 2px 15px 2px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: $header-color;
+    &__raw {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Key,
+    .Backspace,
+    .Tab,
+    .Caps,
+    .Enter,
+    .Shift,
+    .Space {
+        margin: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background: #fff;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.8);
+    }
+
+    .Backspace,
+    .Tab,
+    .Caps,
+    .Enter,
+    .Shift,
+    .Space,
+    .Key.none {
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    .Key {
+        position: relative;
+        width: $key-width;
+        height: $key-height;
+
+        &.little,
+        &.second,
+        &.middle,
+        &.index-r,
+        &.index-l,
+        &.none {
+            &.active {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    border-radius: 5px;
+                    background: rgba(0, 0, 0, .7);
+                }
+            }
+        }
+
+        &.little {
+            background: $little-color;
+        }
+        &.second {
+            background: $second-color;
+        }
+        &.middle {
+            background: $middle-color;
+        }
+        &.index-r {
+            background: $index-r-color;
+        }
+        &.index-l {
+            background: $index-l-color;
+        }
+    }
+
+    .Backspace {
+        height: $key-height;
+        width: $backspace-width;
+    }
+
+    .Tab {
+        height: $key-height;
+        width: $tab-width;
+    }
+
+    .Caps {
+        height: $key-height;
+        width: $caps-width;
+    }
+
+    .Enter {
+        height: $key-height;
+        width: $enter-width;
+    }
+
+    .Shift {
+        height: $key-height;
+        width: $shift-width;
+    }
+
+    .Space {
+        position: relative;
+        height: $key-height;
+        width: $space-width;
+        margin: 2px auto;
+
+        &.active {
+            &::after {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                border-radius: 5px;
+                background: rgba(0, 0, 0, .7);
+            }
+        }
+    }
+
+    .help {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+
+        * {
+            padding: 5px 20px;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+
+        &__little {
+            background: $little-color;
+        }
+
+        &__second {
+            background: $second-color;
+        }
+
+        &__middle {
+            background: $middle-color;
+        }
+
+        &__index {
+            background: rgb(239, 175, 140);
+            background: linear-gradient(90deg, $index-l-color 40%, $index-r-color 60%);
+        }
+    }
+}

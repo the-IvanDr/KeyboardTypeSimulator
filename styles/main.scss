@@ -8,6 +8,7 @@
 
 body{
     background: $background-color;
+    padding: 20px 0;
 }
 
 #__next{
@@ -23,3 +24,7 @@ body{
 @import './AddTextToDB';
 @import './CustomText';
 @import './Learn';
+@import './Train';
+@import './Spoiler';
+@import './LessonList';
+@import './Keyboard';

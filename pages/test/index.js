@@ -1,9 +1,15 @@
+import Head from 'next/head';
+
 import { MainLayout } from '../../components/MainLayout/MainLayout';
 import TypeTest from '../../components/TypeTest/TypeTest';
 
 export default function Test({ text: randomText }) {
     return (
         <MainLayout>
+            <Head>
+                <title>Тест скорости печати</title>
+            </Head>
+
             <TypeTest text={randomText} />
         </MainLayout>
     )

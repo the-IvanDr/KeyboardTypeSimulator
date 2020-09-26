@@ -1,9 +1,15 @@
+import Head from 'next/head';
+
 import { MainLayout } from '../components/MainLayout/MainLayout';
 import LinkButton from '../components/LinkButton/LinkButton';
 
 export default function Learn() {
     return (
         <MainLayout>
+            <Head>
+                <title>KTS | Обучение</title>
+            </Head>
+
             <article className='Learn'>
                 <section>
                     <h2>Узнай как печатать в слепую</h2>
@@ -29,7 +35,7 @@ export default function Learn() {
                     <p>Немного согни пальцы и положи их на клавиши ФЫВА и ОЛДЖ, которые находятся в среднем ряду. Эта строка называется ОСНОВНОЙ СТРОКОЙ, потому что ты всегда будешь начинать с этих клавиш и возвращаться к ним.</p>
                     <br />
                     <p>На клавишах А и О, под указательными пальцами, находятся небольшие выступы. Они позволяют ориентироваться на клавиатуре вслепую.</p>
-                    <img src='img/method.jpg' c />
+                    <img src='img/method.jpg' />
                     <p>Цвет клавиш на этой клавиатуре поможет тебе понять и запомнить, каким пальцем на какую клавишу нужно нажимать.</p>
                     <ul>
                         <li>Нажимай клавиши только тем пальцем, который для них предназначен.</li>
