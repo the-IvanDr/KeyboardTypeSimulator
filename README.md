@@ -13,7 +13,7 @@ npm run dev
 yarn dev
 ```
 
-Then you will get a link (smth type of https://localhost:3000).
+Then you will get a link (smth like that - https://localhost:3000).
 
 To creat a build:
 
