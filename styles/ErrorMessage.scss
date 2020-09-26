@@ -1,0 +1,20 @@
+.ErrorMessage{
+    background: #fff;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+
+    h3{
+        font-size: 25px;
+        opacity: .8;
+    }
+
+    a{
+        display: block;
+        margin-top: 50px;
+        color: $background-color;
+        
+    }
+}

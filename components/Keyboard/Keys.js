@@ -1,6 +1,8 @@
-export function Key({ char, finger, typeKey }) {
+export function Key({ char, finger, typeKey, current }) {
     return (
-        <div className={`Key ${finger} ${typeKey === char ? 'active' : ''}`}>
+        <div className={`Key ${finger} ${typeKey === char ? 'active' : ''} 
+                            ${current === char ? 'current' : ''}`}
+        >
             {char}
         </div>
     )
@@ -46,8 +48,10 @@ export function Shift({ left }) {
     )
 }
 
-export function Space({typeKey}) {
+export function Space({ typeKey, current }) {
     return (
-        <div className={`Space ${typeKey === ' ' ? 'active' : ''}`} />
+        <div className={`Space ${typeKey === ' ' ? 'active' : ''} 
+                                ${current === ' ' ? 'current' : ''}`}
+        />
     )
 }

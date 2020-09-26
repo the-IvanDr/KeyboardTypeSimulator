@@ -67,17 +67,18 @@ $index-r-color: #f0e891;
         &.index-l,
         &.none {
             &.active {
-                &::after {
-                    content: "";
-                    position: absolute;
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                    left: 0;
-                    top: 0;
-                    border-radius: 5px;
-                    background: rgba(0, 0, 0, .7);
-                }
+                box-shadow: inset 1px 1px 5px #000;
+                // &::after {
+                //     content: "";
+                //     position: absolute;
+                //     display: block;
+                //     width: 100%;
+                //     height: 100%;
+                //     left: 0;
+                //     top: 0;
+                //     border-radius: 5px;
+                //     background: rgba(0, 0, 0, .7);
+                // }
             }
         }
 
@@ -95,6 +96,11 @@ $index-r-color: #f0e891;
         }
         &.index-l {
             background: $index-l-color;
+        }
+
+        &.current{
+            box-sizing: border-box;
+            border: 2px solid #000;
         }
     }
 
@@ -130,17 +136,23 @@ $index-r-color: #f0e891;
         margin: 2px auto;
 
         &.active {
-            &::after {
-                content: "";
-                position: absolute;
-                display: block;
-                width: 100%;
-                height: 100%;
-                left: 0;
-                top: 0;
-                border-radius: 5px;
-                background: rgba(0, 0, 0, .7);
-            }
+            box-shadow: inset 1px 1px 5px #000;
+            // &::after {
+            //     content: "";
+            //     position: absolute;
+            //     display: block;
+            //     width: 100%;
+            //     height: 100%;
+            //     left: 0;
+            //     top: 0;
+            //     border-radius: 5px;
+            //     background: rgba(0, 0, 0, .7);
+            // }
+        }
+
+        &.current{
+            box-sizing: border-box;
+            border: 2px solid #000;
         }
     }
 

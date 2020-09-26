@@ -119,7 +119,7 @@ export default function Lesson({ text: trainText, lesson, item, itemsCount }) {
                                 after={state.after}
                                 carriage={carriage}
                             />
-                            <Keyboard />
+                            <Keyboard current={state.current.toUpperCase()} />
                         </>
                     )
             }
@@ -135,8 +135,6 @@ export async function getServerSideProps(context) {
 
     const response = await fetch(`https://typingsimulator.firebaseio.com/lessons/${lsn - 1}/${item - 1}.json`);
     const text = await response.json();
-
-    console.log('text: ', text);
 
     return {
         props: { text, lesson: +lsn, item: +item, itemsCount: +of }
