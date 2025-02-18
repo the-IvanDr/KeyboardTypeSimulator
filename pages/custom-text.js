@@ -17,7 +17,6 @@ export default function CustomText() {
         }
     };
 
-    // Запрещаем ввод Enter
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
@@ -39,7 +38,7 @@ export default function CustomText() {
                                 placeholder='Введите свой текст сюда'
                                 value={text}
                                 onChange={onChangeHandler}
-                                onKeyDown={handleKeyDown}  // Добавляем обработчик
+                                onKeyDown={handleKeyDown}  
                             />
                             <button onClick={startTyping}>Печатать</button>
                         </div>
