@@ -7,13 +7,16 @@ export default function Header() {
 
     return (
         <header>
-            <Link href='/'><a className="logo"><img src='../logo.png'></img></a></Link>
+            <Link href="/" className="logo">
+                <img src="/logo.png" alt="Логотип" />
+            </Link>
+            
             <nav>
-                <Link href='/learn'><a className={path === '/learn' ? 'current' : null}>Обучение</a></Link>
-                <Link href='/train'><a className={path === '/train' ? 'current' : null}>Тренажер</a></Link>
-                <Link href='/test'><a className={path === '/test' ? 'current' : null}>Тестирование</a></Link>
-                <Link href='/custom-text'><a className={path === '/custom-text' ? 'current' : null}>Свой текст</a></Link>
+                <Link href="/learn" className={path === '/learn' ? 'current' : ''}>Обучение</Link>
+                <Link href="/train" className={path === '/train' ? 'current' : ''}>Тренажер</Link>
+                <Link href="/test" className={path === '/test' ? 'current' : ''}>Тестирование</Link>
+                <Link href="/custom-text" className={path === '/custom-text' ? 'current' : ''}>Свой текст</Link>
             </nav>
         </header>
-    )
+    );
 }

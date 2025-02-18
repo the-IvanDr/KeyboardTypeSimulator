@@ -7,7 +7,7 @@ export default function checkKey(inputKey, typeKey) {
         typeKey = '"';
     }
 
-    if (typeKey === 'ё') {
+    if (typeKey === 'ё'&& inputKey === 'е') {
         typeKey = 'е';
     }
 
